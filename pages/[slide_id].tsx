@@ -1,4 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from "next";
+import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useMemo, useState } from "react";
@@ -53,24 +54,29 @@ const SlidePermalink = ({ slide }: Props) => {
   };
 
   return (
-    <div>
-      <h1>{slide.title}</h1>
-      <button onClick={() => paginate(page - 1)} disabled={page === 1}>
-        prev
-      </button>
-      <button onClick={() => paginate(page + 1)} disabled={page === numPages}>
-        next
-      </button>
-      <Link href={slide.url}>download</Link>
-      <Document file={slide.url} onLoadSuccess={handleLoadSuccess}>
-        <Page
-          pageNumber={page}
-          height={405}
-          renderTextLayer={false}
-          renderAnnotationLayer={false}
-        />
-      </Document>
-    </div>
+    <>
+      <Head>
+        <title>{slide.title}</title>
+      </Head>
+      <div>
+        <h1>{slide.title}</h1>
+        <button onClick={() => paginate(page - 1)} disabled={page === 1}>
+          prev
+        </button>
+        <button onClick={() => paginate(page + 1)} disabled={page === numPages}>
+          next
+        </button>
+        <Link href={slide.url}>download</Link>
+        <Document file={slide.url} onLoadSuccess={handleLoadSuccess}>
+          <Page
+            pageNumber={page}
+            height={405}
+            renderTextLayer={false}
+            renderAnnotationLayer={false}
+          />
+        </Document>
+      </div>
+    </>
   );
 };
 
