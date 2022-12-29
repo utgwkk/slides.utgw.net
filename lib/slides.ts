@@ -9,7 +9,7 @@ export const slides = new Map<string, Slide>([
     "yapc-japan-online-2022",
     {
       title: "prototypeとjust epic. と私",
-      url: "/pdf/20220305-prototype-and-just-epic-and-me.pdf",
+      url: "https://sugarheart.utgw.net/static/pdf/20220305-prototype-and-just-epic-and-me.pdf",
     },
   ],
 ]);
