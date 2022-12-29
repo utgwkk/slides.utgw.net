@@ -1,6 +1,24 @@
+import { GetStaticProps } from "next";
 import Head from "next/head";
+import Link from "next/link";
+import { Slide, slides } from "../lib/slides";
 
-export default function Home() {
+interface Props {
+  slides: (Slide & { id: string })[];
+}
+
+export const getStaticProps: GetStaticProps<Props> = () => {
+  return {
+    props: {
+      slides: Array.from(slides.entries()).map(([id, slide]) => ({
+        id,
+        ...slide,
+      })),
+    },
+  };
+};
+
+export default function Home({ slides }: Props) {
   return (
     <>
       <Head>
@@ -9,6 +27,13 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <h1>It works!</h1>
+      <ul>
+        {slides.map((slide) => (
+          <li key={slide.id}>
+            <Link href={`/${slide.id}`}>{slide.title}</Link>
+          </li>
+        ))}
+      </ul>
     </>
   );
 }
