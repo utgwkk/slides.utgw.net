@@ -1,4 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from "next";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useMemo, useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
@@ -60,6 +61,7 @@ const SlidePermalink = ({ slide }: Props) => {
       <button onClick={() => paginate(page + 1)} disabled={page === numPages}>
         next
       </button>
+      <Link href={slide.url}>download</Link>
       <Document file={slide.url} onLoadSuccess={handleLoadSuccess}>
         <Page
           pageNumber={page}
