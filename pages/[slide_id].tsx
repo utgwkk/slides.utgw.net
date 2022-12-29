@@ -28,8 +28,12 @@ const SlidePermalink = ({ slide }: Props) => {
       return 1;
     }
 
+    if (pageNum < 1 || pageNum > numPages) {
+      return 1;
+    }
+
     return pageNum;
-  }, [router.isReady, router.query?.slide]);
+  }, [numPages, router.isReady, router.query?.slide]);
 
   const handleLoadSuccess = ({ numPages }: { numPages: number }) => {
     console.log(numPages);
@@ -58,7 +62,12 @@ const SlidePermalink = ({ slide }: Props) => {
         next
       </button>
       <Document file={slide.url} onLoadSuccess={handleLoadSuccess}>
-        <Page pageNumber={page} height={405} />
+        <Page
+          pageNumber={page}
+          height={405}
+          renderTextLayer={false}
+          renderAnnotationLayer={false}
+        />
       </Document>
     </div>
   );
