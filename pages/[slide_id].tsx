@@ -36,7 +36,6 @@ const SlidePermalink = ({ slide }: Props) => {
   }, [numPages, router.isReady, router.query?.slide]);
 
   const handleLoadSuccess = ({ numPages }: { numPages: number }) => {
-    console.log(numPages);
     setNumPages(numPages);
   };
   const paginate = (to: number) => {
