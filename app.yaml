@@ -4,6 +4,9 @@ handlers:
   - url: /_next/static
     static_dir: .next/static
 
+  - url: /cmaps
+    static_dir: public/cmaps
+
   - url: /.*
     script: auto
     secure: always
