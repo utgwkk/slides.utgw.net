@@ -67,7 +67,11 @@ const SlidePermalink = ({ slide }: Props) => {
           next
         </button>
         <Link href={slide.url}>download</Link>
-        <Document file={slide.url} onLoadSuccess={handleLoadSuccess}>
+        <Document
+          file={slide.url}
+          onLoadSuccess={handleLoadSuccess}
+          options={{ cMapUrl: "/cmaps/", cMapPacked: true }}
+        >
           <Page
             pageNumber={page}
             height={405}

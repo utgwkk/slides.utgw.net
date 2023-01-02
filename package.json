@@ -5,9 +5,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "prebuild": "npm run sync-cmaps",
     "export": "next build && next export",
     "start": "next start -p $PORT",
     "clean": "rm -rf .next/",
+    "sync-cmaps": "cp ./node_modules/pdfjs-dist/cmaps/* ./public/cmaps/",
     "lint": "next lint"
   },
   "dependencies": {
